@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Student Registration System</h1>
+        <p>Manage student records with ease</p>
+      </div>
+
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('register')">
+          Register Student
+        </button>
+        <button class="nav-tab" onclick="showSection('records')">
+          View Records
+        </button>
+      </div>
+
+      <!-- Registration Section -->
+      <div id="register-section" class="content-section active">
+        <div class="form-container">
+          <h2 style="margin-bottom: 25px; color: #333; text-align: center">
+            Student Registration Form
+          </h2>
+          <form id="studentForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="studentName">Student Name *</label>
+                <input
+                  type="text"
+                  id="studentName"
+                  name="studentName"
+                  placeholder="Enter full name"
+                />
+                <span class="error-message"
+                  >Please enter a valid name (letters only)</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="studentId">Student ID *</label>
+                <input
+                  type="text"
+                  id="studentId"
+                  name="studentId"
+                  placeholder="Enter student ID"
+                />
+                <span class="error-message"
+                  >Please enter a valid student ID (numbers only)</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email ID *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter email address"
+                />
+                <span class="error-message"
+                  >Please enter a valid email address</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="contactNumber">Contact Number *</label>
+                <input
+                  type="text"
+                  id="contactNumber"
+                  name="contactNumber"
+                  placeholder="Enter 10-digit contact number"
+                />
+                <span class="error-message"
+                  >Please enter a valid 10-digit contact number</span
+                >
+              </div>
+            </div>
+
+            <div class="btn-group">
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                Add Student
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="resetForm()"
+              >
+                Reset Form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Records Section -->
+      <div id="records-section" class="content-section">
+        <div class="records-container">
+          <div class="records-header">
+            <h2 style="color: #333; margin: 0">Student Records</h2>
+            <div class="records-count" id="recordsCount">Total: 0</div>
+            <input
+              type="text"
+              class="search-box"
+              id="searchBox"
+              placeholder="Search students..."
+            />
+          </div>
+
+          <div class="table-container" id="tableContainer">
+            <table class="records-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Student ID</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="recordsBody">
+                <tr class="no-records">
+                  <td colspan="5">
+                    No student records found. Start by registering a student.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Student</h3>
+          <button class="close-btn" onclick="closeEditModal()">&times;</button>
+        </div>
+        <form id="editForm">
+          <div class="form-group">
+            <label for="editStudentName">Student Name *</label>
+            <input
+              type="text"
+              id="editStudentName"
+              name="editStudentName"
+              placeholder="Enter full name"
+            />
+            <span class="error-message"
+              >Please enter a valid name (letters only)</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="editStudentId">Student ID *</label>
+            <input
+              type="text"
+              id="editStudentId"
+              name="editStudentId"
+              placeholder="Enter student ID"
+            />
+            <span class="error-message"
+              >Please enter a valid student ID (numbers only)</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="editEmail">Email ID *</label>
+            <input
+              type="email"
+              id="editEmail"
+              name="editEmail"
+              placeholder="Enter email address"
+            />
+            <span class="error-message"
+              >Please enter a valid email address</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="editContactNumber">Contact Number *</label>
+            <input
+              type="text"
+              id="editContactNumber"
+              name="editContactNumber"
+              placeholder="Enter 10-digit contact number"
+            />
+            <span class="error-message"
+              >Please enter a valid 10-digit contact number</span
+            >
+          </div>
+
+          <div class="btn-group" style="margin-top: 25px">
+            <button type="submit" class="btn btn-primary">
+              Update Student
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeEditModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
